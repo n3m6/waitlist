@@ -1,31 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap");
+/* css
+services/web/src/index.css
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family:
-    "Space Mono", "Courier New", monospace, Inter, system-ui, Avenir, Helvetica,
-    Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    /* Dark Pool DEX Color Palette - Retro-Futuristic */
+    --background: 259 14% 32%; /* Deep Lavender-Gray #4D455D */
+    --foreground: 42 63% 89%; /* Creamy Beige #F5E9CF */
+
+    --card: 259 14% 36%;
+    --card-foreground: 42 63% 89%;
+
+    --popover: 259 14% 28%;
+    --popover-foreground: 42 63% 89%;
+
+    --primary: 349 73% 65%; /* Vibrant Coral Pink #E96479 */
+    --primary-foreground: 259 14% 32%;
+
+    --secondary: 175 28% 61%; /* Seafoam Green #7DB9B6 */
+    --secondary-foreground: 259 14% 32%;
+
+    --muted: 259 14% 42%;
+    --muted-foreground: 42 45% 70%;
+
+    --accent: 349 73% 65%;
+    --accent-foreground: 259 14% 32%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 42 63% 89%;
+
+    --border: 259 14% 45%;
+    --input: 259 14% 45%;
+    --ring: 349 73% 65%;
+
+    --radius: 0.25rem;
+
+    /* Custom design tokens for retro-futuristic aesthetic */
+    --grid-color: 259 14% 40%;
+    --glow-color: 349 73% 65%;
+  }
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: "Oxanium", monospace;
+    background-image:
+      linear-gradient(hsl(var(--grid-color) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
 }
 
 @layer utilities {
-  .retro-glow {
-    text-shadow:
-      0 0 10px #e96479,
-      0 0 20px #e96479,
-      0 0 30px #e96479;
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out forwards;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
